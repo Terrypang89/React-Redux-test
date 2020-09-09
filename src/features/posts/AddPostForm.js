@@ -3,13 +3,35 @@
 //so that new posts are added when click the "Save Post" button.
 import React, { useState } from 'react'
 
-export const AddPostForm = () => {
+// get postAdded for dispatch action from reducer
+import { useDispatch } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
+import { postAdded } from './postsSlice'
 
+export const AddPostForm = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const dispatch = useDispatch() 
 
   const onTitleChanged = e => setTitle(e.target.value)
   const onContentChanged = e => setContent(e.target.value)
+
+  //add click handler that dispatch postAdded action creator 
+  // and pass ub ne wpost obj containing title and 
+  const onSavePostClicked = () => {
+    if (title && content) {
+      dispatch(
+          //postAdded is the reducer function from postsSlice so dispatch push 
+        postAdded({ // these id, title and content will be action.payload to add to state
+          id: nanoid(),
+          title,
+          content
+        })
+      )
+      setTitle('')
+      setContent('')
+    } // after done, settitle and content to empty
+  }
 
   return (
     <section>
@@ -30,7 +52,9 @@ export const AddPostForm = () => {
           value={content}
           onChange={onContentChanged}
         />
-        <button type="button">Save Post</button>
+        <button type="button" onClick={onSavePostClicked}>
+            Save Post
+        </button>
       </form>
     </section>
   )
