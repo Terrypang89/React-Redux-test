@@ -1,3 +1,4 @@
+//provides a fake REST API for our data. Our app will fetch data from these fake endpoints later.
 import {
     Server,
     Model,

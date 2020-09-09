@@ -1,4 +1,5 @@
 
+//a small AJAX request client that allows us to make GET and POST requests
 export async function client(endpoint, { body, ...customConfig } = {}) {
     const headers = { 'Content-Type': 'application/json' }
 

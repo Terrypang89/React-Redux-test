@@ -1,3 +1,4 @@
+//renders the top header and nav content
 import React from 'react'
 
 export const Navbar = () => {
@@ -5,7 +6,6 @@ export const Navbar = () => {
     <nav>
       <section>
         <h1>Redux Essentials Example</h1>
-
         <div className="navContent">
           <div className="navLinks"></div>
         </div>

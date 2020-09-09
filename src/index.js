@@ -1,3 +1,6 @@
+//the entry point file for the application. 
+//It renders the React-Redux <Provider> component and the main <App> component
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
